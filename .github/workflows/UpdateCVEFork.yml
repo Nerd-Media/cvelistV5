@@ -44,18 +44,6 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true
 
-#      - name: Whitelist GitHub Runner IP
-#        uses: azure/CLI@v1
-#        with:
-#          inlineScript: |
-#            set -eu
-#            agentIP=$(curl -s https://api.ipify.org/)
-#            az storage account network-rule add \
-#              --resource-group "${{ secrets.RESOURCE_GROUP }}" \
-#              --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-#              --ip-address $agentIP
-#            sleep 300 
-
       - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
@@ -64,21 +52,11 @@ jobs:
               --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --container "${{ secrets.CONTAINER }}" \
-              --source "/cvlistV5/cves" \
+              --source "cves/" \
               --destination "/" 
              
               
-#      - name: Remove GitHub Runner IP from Whitelist
-#        if: always()
-#        uses: azure/CLI@v1
-#        with:
-#          inlineScript: |
-#            set -eu
-#            agentIP=$(curl -s https://api.ipify.org/)
-#            az storage account network-rule remove  \
-#              --resource-group "${{ secrets.RESOURCE_GROUP }}" \
-#              --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-#              --ip-address $agentIP
+
 
       - name: logout
         run: |
