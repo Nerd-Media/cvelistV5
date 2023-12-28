@@ -29,3 +29,6 @@ jobs:
           git fetch upstream 
           git merge upstream/main --allow-unrelated-histories --strategy-option theirs
           git push origin main
+      - with:
+              repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
