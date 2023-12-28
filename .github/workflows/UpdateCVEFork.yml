@@ -27,9 +27,9 @@ jobs:
       - name: Merge upstream changes
         with:
            repo-token: ${{ secrets.GITHUB_TOKEN }}
-           run: |
-              git fetch upstream 
-              git merge upstream/main --allow-unrelated-histories --strategy-option theirs
-              git push origin main
+        run: |
+           git fetch upstream 
+           git merge upstream/main --allow-unrelated-histories --strategy-option theirs
+           git push origin main
         
           
