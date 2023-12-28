@@ -15,7 +15,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/CVEProject/cvelistV5/
       - name: Merge upstream changes
         run: |
-          git pull upstream master
+          git fetch upstream
+          git merge upstream/master
           git push origin master
