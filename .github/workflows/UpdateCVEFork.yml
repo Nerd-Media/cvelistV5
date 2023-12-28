@@ -60,13 +60,13 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob upload-batch \
+            az storage blob sync \
               --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
-              --container "${{ secrets.CONTAINER }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-              --source . \
-              --destination "/" \
-              --overwrite true
+              --container "${{ secrets.CONTAINER }}" \
+              --source "/cvlistV5/cves" \
+              --destination "/" 
+             
               
 #      - name: Remove GitHub Runner IP from Whitelist
 #        if: always()
