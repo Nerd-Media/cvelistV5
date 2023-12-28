@@ -30,5 +30,7 @@ jobs:
         run: git merge upstream/main  --strategy-option theirs --allow-unrelated-histories
       - name: push origin Main
         run: git push origin main
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
           
