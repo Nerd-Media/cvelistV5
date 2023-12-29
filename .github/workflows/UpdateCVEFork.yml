@@ -22,6 +22,13 @@ jobs:
       - uses: webfactory/ssh-agent@v0.8.0	
         with:	
             ssh-private-key: ${{ secrets.CVEPRIVATEKEY }}
+      - name: get current commit timestamp
+        run: |
+           echo "LASTCOMMIT1=$(git show --no-patch --no-notes --pretty='%cI')" >> $GITHUB_ENV 
+           echo "LASTCOMMIT2=${{github.event.head_commit.timestamp}}" >>   $GITHUB_ENV 
+           echo GIT SHOW TIMESTAMP   :  ${{env.LASTCOMMIT1}}
+           echo HEAD_COMMIT TIMESTAMP: ${{env.LASTCOMMIT2}}
+
       - name: Configure Git
         run: |
           git config --global user.email "raulr+github@live.com"
@@ -47,12 +54,13 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage azcopy blob sync \
+            az storage blob upload-batch \
               --auth-mode key \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --source "./cves" \
-              --container "${{ secrets.CONTAINER }}" \
-              --destination "/cves"
+              --destination "${{ secrets.CONTAINER }}" \
+              --destination-path "/cves"\
+              --if-modified-since ${{env.LASTCOMMIT1}}
                          
       - name: logout
         run: |
