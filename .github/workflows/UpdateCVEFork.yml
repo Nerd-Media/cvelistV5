@@ -24,10 +24,10 @@ jobs:
             ssh-private-key: ${{ secrets.CVEPRIVATEKEY }}
       - name: get current commit timestamp
         run: |
-           echo "LASTCOMMIT1=$(git show --no-patch --no-notes --pretty='%cI')" >> $GITHUB_ENV 
-           echo "LASTCOMMIT2=${{github.event.head_commit.timestamp}}" >>   $GITHUB_ENV 
-           echo GIT SHOW TIMESTAMP   :  ${{env.LASTCOMMIT1}}
-           echo HEAD_COMMIT TIMESTAMP: ${{env.LASTCOMMIT2}}
+           echo "LASTCOMMIT1=$(git show --no-patch --no-notes --pretty='%cI')" >> "$GITHUB_ENV" 
+           echo "LASTCOMMIT2=${{github.event.head_commit.timestamp}}" >> "$GITHUB_ENV" 
+           echo GIT SHOW TIMESTAMP   : $LASTCOMMIT1
+           echo HEAD_COMMIT TIMESTAMP: $LASTCOMMIT2
 
       - name: Configure Git
         run: |
