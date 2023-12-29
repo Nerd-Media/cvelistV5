@@ -27,8 +27,7 @@ jobs:
            echo "LASTCOMMIT1=$(git show --no-patch --no-notes --pretty=%cd --date=format:%Y-%m-%d'T'%H:%M'Z')" >> "$GITHUB_ENV" 
       - name: show current commit timestamp
         run: |
-           echo GIT SHOW TIMESTAMP   : ${{env.LASTCOMMIT1}}
-           
+           echo GIT SHOW TIMESTAMP   : ${{env.LASTCOMMIT1}}           
       - name: Configure Git
         run: |
           git config --global user.email "raulr+github@live.com"
@@ -61,10 +60,7 @@ jobs:
               --destination "${{ secrets.CONTAINER }}" \
               --destination-path "/cves" \
               --if-modified-since ${{env.LASTCOMMIT1}} \
-              --overwrite false
-              
-              
-                         
+              --overwrite true                  
       - name: logout
         run: |
               az logout
