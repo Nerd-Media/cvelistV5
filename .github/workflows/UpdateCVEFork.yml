@@ -60,7 +60,7 @@ jobs:
               --source "./cves" \
               --destination "${{ secrets.CONTAINER }}" \
               --destination-path "/cves" \
-              --override false
+              --overwrite false
 #               --if-modified-since ${{env.LASTCOMMIT1}} \
               
                          
