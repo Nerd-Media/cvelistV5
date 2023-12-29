@@ -48,9 +48,9 @@ jobs:
         with:
           inlineScript: |
             az storage azcopy blob sync \
-              --auth-mode login \
+              --auth-mode key \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-              --source "./cves/*" \
+              --source "./cves" \
               --container "${{ secrets.CONTAINER }}"
               --destination "/cves"
            
