@@ -50,7 +50,7 @@ jobs:
             az storage blob sync \
               --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-              --container "${{ secrets.CONTAINER }}"
+              --container "${{ secrets.CONTAINER }}" \
               --source "./cves"
            
       - name: logout
