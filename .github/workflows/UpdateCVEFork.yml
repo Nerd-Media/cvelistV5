@@ -44,7 +44,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true
       - name: folder contents
-        run : ls / -lsAHR
+        run : ls ./ -lsAHR
       - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
@@ -53,7 +53,7 @@ jobs:
               --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --container "${{ secrets.CONTAINER }}"
-              --source "/cves"
+              --source "./"
            
       - name: logout
         run: |
