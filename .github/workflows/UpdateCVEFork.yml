@@ -47,10 +47,10 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az storage blob sync \
+            az storage blob upload-batch \
               --auth-mode login \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-              --container "${{ secrets.CONTAINER }}" \
+              --destination "${{ secrets.CONTAINER }}" \
               --source "./cves"
            
       - name: logout
