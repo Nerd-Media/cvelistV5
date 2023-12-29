@@ -41,7 +41,6 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           enable-AzPSSession: true
-
       - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
@@ -51,10 +50,6 @@ jobs:
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --source . \
               --destination "${{ secrets.CONTAINER }}"
-             
-              
-
-
       - name: logout
         run: |
               az logout
