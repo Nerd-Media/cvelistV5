@@ -52,9 +52,8 @@ jobs:
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --source "./cves" \
               --container "${{ secrets.CONTAINER }}" \
-              --destination "/cves" \
-              --recursive
-           
+              --destination "/cves"
+                         
       - name: logout
         run: |
               az logout
