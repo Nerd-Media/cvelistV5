@@ -60,8 +60,9 @@ jobs:
               --source "./cves" \
               --destination "${{ secrets.CONTAINER }}" \
               --destination-path "/cves" \
+              --if-modified-since ${{env.LASTCOMMIT1}} \
               --overwrite false
-#               --if-modified-since ${{env.LASTCOMMIT1}} \
+              
               
                          
       - name: logout
