@@ -49,7 +49,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob sync \
-              --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
+              --account-key  "${{ secrets.AZURE_STORAGE_KEY }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --container "${{ secrets.CONTAINER }}" \
               --source . \
