@@ -23,9 +23,6 @@ jobs:
         run: |
           git config --global user.email "raulr+github@live.com"
           git config --global user.name "ElJefeDSecurIT"
-      - uses: webfactory/ssh-agent@v0.8.0
-        with:
-            ssh-private-key: ${{ secrets.CVEPRIVATEKEY }}
       - name: Add and fetch upstream remote
         run: |
            git remote add upstream https://github.com/CVEProject/cvelistV5/
@@ -50,7 +47,7 @@ jobs:
         with:
           inlineScript: |
             az storage blob sync \
-              --account-key  "${{ secrets.AZURE_STORAGE_KEY }}" \
+              --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --source . \
               --destination "${{ secrets.CONTAINER }}"
