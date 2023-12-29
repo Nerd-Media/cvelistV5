@@ -37,6 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Azure login
+        uses: actions/checkout@v3
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -51,9 +52,8 @@ jobs:
             az storage blob sync \
               --account-key  "${{ secrets.AZURE_STORAGE_KEY }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
-              --container "${{ secrets.CONTAINER }}" \
               --source . \
-              --destination "/" 
+              --destination "${{ secrets.CONTAINER }}"
              
               
 
