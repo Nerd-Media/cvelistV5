@@ -53,7 +53,7 @@ jobs:
               --sas-token  "${{ secrets.AZURE_STORAGE_SAS_TOKEN }}" \
               --account-name "${{ secrets.STORAGE_ACCOUNT_NAME }}" \
               --container "${{ secrets.CONTAINER }}"
-              --source .
+              --source "/cves"
            
       - name: logout
         run: |
