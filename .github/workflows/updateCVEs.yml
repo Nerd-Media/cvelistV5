@@ -30,7 +30,7 @@ jobs:
         shell: pwsh
         run: |
           $localpath = "./"
-          $pathurl = "${{secrets.LOCAL_DELTA}}?${{secrets.AZURE_STORAGE_SAS_TOKEN}}"
+          $pathurl = ${{secrets.LOCAL_DELTA}} + "?${{secrets.AZURE_STORAGE_SAS_TOKEN}}"
           
           echo $pathurl
           
