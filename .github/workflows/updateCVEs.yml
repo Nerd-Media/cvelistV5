@@ -30,7 +30,7 @@ jobs:
         shell: pwsh
         run: |
           $localpath = "./"
-          $pathurl = ${{ secrets.LOCAL_DELTA }} + "?" + ${{ secrets.AZURE_STORAGE_SAS_TOKEN}}
+          $pathurl = ${{ secrets.LOCAL_DELTA }} + "?${{ secrets.AZURE_STORAGE_SAS_TOKEN}}"
           $pathurl
           #get last delta timestamp from azure storage
           $lastfetch = Invoke-RestMethod -uri $pathurl  | select -First 1 |%{$_.fetchTime}
