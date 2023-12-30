@@ -33,7 +33,7 @@ jobs:
           $pathurl = 
                    
           #get last delta timestamp from azure storage. LOCAL_DELTA assumes the storage acct SAS token is embedded. it is set to read this file and only this file alone and will expire in one year.
-          $lastfetch = Invoke-RestMethod -uri ${{secrets.LOCAL_DELTA}}  | select -First 1 |%{$_.fetchTime}
+          $lastfetch = Invoke-RestMethod -uri '${{secrets.LOCAL_DELTA}}'  | select -First 1 |%{$_.fetchTime}
           
           # get the deltalog
           $deltalog = 'https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/deltaLog.json'
