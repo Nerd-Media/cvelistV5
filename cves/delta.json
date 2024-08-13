@@ -1,12 +1,12 @@
 {
-  "fetchTime": "2024-08-02T20:01:55.703Z",
+  "fetchTime": "2024-08-13T01:25:44.559Z",
   "numberOfChanges": 1,
   "new": [
     {
-      "cveId": "CVE-2024-42349",
-      "cveOrgLink": "https://www.cve.org/CVERecord?id=CVE-2024-42349",
-      "githubLink": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2024/42xxx/CVE-2024-42349.json",
-      "dateUpdated": "2024-08-02T20:01:29.055Z"
+      "cveId": "CVE-2022-38382",
+      "cveOrgLink": "https://www.cve.org/CVERecord?id=CVE-2022-38382",
+      "githubLink": "https://raw.githubusercontent.com/CVEProject/cvelistV5/main/cves/2022/38xxx/CVE-2022-38382.json",
+      "dateUpdated": "2024-08-13T01:12:08.534Z"
     }
   ],
   "updated": [],
